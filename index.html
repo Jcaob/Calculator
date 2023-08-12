@@ -15,35 +15,39 @@
     <h1>
         Calculator
     </h1>
-    <input type="number" value="" id="display" autofocus>
+    <section>
+        <h3 id="working"></h3>
+        <h3 id="operator" data-operator="+"></h3>
+    </section>
+    <!-- <input type="number" value="" id="display" autofocus> -->
     <div>
         <button onclick="cancel()">AC</button>
         <button onclick="invertSign()">+/-</button>
         <button>BS</button>
-        <button>/</button>
+        <button onclick="operate('/')">/</button>
     </div>
     <div>
         <button onclick="enterNumber(7)">7</button>
         <button onclick="enterNumber(8)">8</button>
         <button onclick="enterNumber(9)">9</button>
-        <button>*</button>
+        <button onclick="operate('*')">*</button>
     </div>
     <div>
         <button onclick="enterNumber(4)">4</button>
         <button onclick="enterNumber(5)">5</button>
         <button onclick="enterNumber(6)">6</button>
-        <button>-</button>
+        <button onclick="operate('-')">-</button>
     </div>
     <div>
         <button onclick="enterNumber(1)">1</button>
         <button onclick="enterNumber(2)">2</button>
         <button onclick="enterNumber(3)">3</button>
-        <button>+</button>
+        <button onclick="operate('+')">+</button>
     </div>
     <div>
         <button onclick="enterNumber(0)">0</button>
         <button>.</button>
-        <button>=</button>
+        <button onclick="operate('=')">=</button>
     </div>
 
 </body>
