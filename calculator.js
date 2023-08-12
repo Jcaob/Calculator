@@ -7,6 +7,9 @@ function subtract(x, y) {
 }
 
 function divide(x, y) {
+    if (y === 0) {
+        displayError("Cannot divide by zero");
+    }
     return parseFloat(x) / parseFloat(y);
 }
 
@@ -44,3 +47,60 @@ function invertSign() {
     let newNumber = current * -1
     document.getElementById("display").value = newNumber
 }
+// //////////////////////////////////////////////////////////
+// function appendToInput(display) {
+//     current += display;
+//     updateDisplay(current);
+//   }
+// ///////////////////////////////////////////////////////////
+// let firstNumber = null;
+// let selectedOperator = null;
+
+// document.querySelectorAll(".enterNumber").forEach(button => {
+//   button.addEventListener("click", () => {
+//     appendToInput(button.textContent);
+//   });
+// });
+
+// document.querySelectorAll(".operator").forEach(button => {
+//     button.addEventListener("click", () => {
+//       if (firstNumber === null) {
+//         firstNumber = parseFloat(current);
+//         selectedOperator = button.textContent;
+//         current = ""; // Clear input for next number
+//       } else {
+//         const secondNumber = parseFloat(current);
+//         const result = operate(selectedOperator, firstNumber, secondNumber);
+//         updateDisplay(result);
+//         firstNumber = result;
+//         selectedOperator = button.textContent;
+//         current = ""; // Clear input for next number
+//       }
+//     });
+//   });
+  
+//   document.getElementById("equals").addEventListener("click", () => {
+//     if (firstNumber !== null && selectedOperator !== null) {
+//       const secondNumber = parseFloat(current);
+//       const result = operate(selectedOperator, firstNumber, secondNumber);
+//       updateDisplay(result);
+//       firstNumber = result;
+//       selectedOperator = null;
+//       current = ""; // Clear input for next number
+//     }
+//   });
+  
+//   document.getElementById("clear").addEventListener("click", () => {
+//     current = "";
+//     firstNumber = null;
+//     selectedOperator = null;
+//     updateDisplay("0");
+//   });
+  
+//   // Implement the other buttons similarly
+  
+//   // Handle backspace
+//   document.getElementById("backspace").addEventListener("click", () => {
+//     current = current.slice(0, -1);
+//     updateDisplay(current);
+//   });
