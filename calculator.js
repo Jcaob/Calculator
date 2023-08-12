@@ -44,3 +44,9 @@ function invertSign() {
     let newNumber = current * -1
     document.getElementById("display").value = newNumber
 }
+
+function backSpace(){
+    let current = parseFloat(document.getElementById("display").value)
+    let newNumber = current.toString().slice(0,-1);
+    document.getElementById("display").value = newNumber
+}
