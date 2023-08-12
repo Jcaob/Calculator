@@ -14,16 +14,16 @@ function multiply(x, y) {
     return parseFloat(x) * parseFloat(y);
 }
 
-function operate(operator, a, b) {
+function operate(operator, x, y) {
     switch (operator) {
         case "+":
-            return add(a, b);
+            return add(x, y);
         case "-":
-            return subtract(a, b);
+            return subtract(x, y);
         case "*":
-            return multiply(a, b);
+            return multiply(x, y);
         case "/":
-            return divide(a, b);
+            return divide(x, y);
         default:
             return NaN; // Handle invalid operator
     }
