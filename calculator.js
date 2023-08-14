@@ -38,7 +38,7 @@ function calculate(operator, a, b) {
         case "=":
             document.getElementById("working").value = working;
         default:
-            return NaN; // Handle invalid operator
+            return NaN;
     }
 }
 
