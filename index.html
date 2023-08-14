@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,36 +15,38 @@
     <h1>
         Calculator
     </h1>
-    <input type="number" value="" id="display" autofocus>
-    <div>
+    <section>
+        <input value="" id="working">
+    </section>
+    <section>
         <button onclick="cancel()">AC</button>
         <button onclick="invertSign()">+/-</button>
         <button>BS</button>
-        <button>/</button>
-    </div>
-    <div>
+        <button onclick="operate('/')" class="op">/</button>
+    </section>
+    <section>
         <button onclick="enterNumber(7)">7</button>
         <button onclick="enterNumber(8)">8</button>
         <button onclick="enterNumber(9)">9</button>
-        <button>*</button>
-    </div>
-    <div>
+        <button onclick="operate('*')" class="op">*</button>
+    </section>
+    <section>
         <button onclick="enterNumber(4)">4</button>
         <button onclick="enterNumber(5)">5</button>
         <button onclick="enterNumber(6)">6</button>
-        <button>-</button>
-    </div>
-    <div>
+        <button onclick="operate('-')" class="op">-</button>
+    </section>
+    <section>
         <button onclick="enterNumber(1)">1</button>
         <button onclick="enterNumber(2)">2</button>
         <button onclick="enterNumber(3)">3</button>
-        <button>+</button>
-    </div>
-    <div>
-        <button onclick="enterNumber(0)">0</button>
-        <button>.</button>
-        <button>=</button>
-    </div>
+        <button onclick="operate('+')" class="op">+</button>
+    </section>
+    <section>
+        <button onclick="enterNumber(0)" class="zero">0</button>
+        <button onclick="addDecimalPoint()">.</button>
+        <button onclick="operate('=')" class="op">=</button>
+    </section>
 
 </body>
 
