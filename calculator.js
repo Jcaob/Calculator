@@ -11,8 +11,10 @@ function subtract(x, y) {
 }
 
 function divide(x, y) {
-    if (y === 0) {
+    if (y === '0') {
         stacking = false
+        working = ''
+        operator = ''
         return ("You are trying to divide by zero! Are you trying to create a black hole?")
     } else {
         return parseFloat(x) / parseFloat(y);
@@ -33,19 +35,29 @@ function calculate(operator, a, b) {
             return multiply(a, b);
         case "/":
             return divide(a, b);
+        case "=":
+            document.getElementById("working").value = working;
+        // return divide(a, b);
         default:
             return NaN; // Handle invalid operator
     }
 }
 
 function enterNumber(number) {
-    let current = document.getElementById("working").innerHTML
+    if (!stacking) {
+        document.getElementById("working").value = ""
+    }
+    stacking = true
+    let current = document.getElementById("working").value
     let newNumber = current + number
-    document.getElementById("working").innerHTML = newNumber
+    document.getElementById("working").value = newNumber
 }
 
 function cancel() {
-    document.getElementById("display").value = ""
+    stacking = false
+    working = ''
+    operator = ''
+    document.getElementById("working").value = ""
 }
 
 function invertSign() {
@@ -54,26 +66,35 @@ function invertSign() {
     document.getElementById("display").value = newNumber
 }
 
-function operate(op) {
-    let currentDisplay = document.getElementById("display").value
-    let currentWorking = document.getElementById("working").innerHTML
-    let currentOperator = document.getElementById("operator").getAttribute("data-operator")
-
-    if (currentWorking && currentOperator && currentDisplay && stacking) {
-        const answer = calculate(currentOperator, currentWorking, currentDisplay)
-        document.getElementById("working").innerHTML = answer;
-    } else if (currentDisplay) {
-        document.getElementById("working").innerHTML = currentDisplay;
+function addDecimalPoint() {
+    if (!stacking) {
+        document.getElementById("working").value = "0"
     }
-
-    if (op != '=') {
+    let current = document.getElementById("working").value
+    if (!current.includes('.')) {
         stacking = true
-        document.getElementById("operator").setAttribute("data-operator", op)
-        document.getElementById("operator").innerHTML = op;
-    } else {
-        stacking = false
-        document.getElementById("operator").innerHTML = '';
+        let newNumber = current + "."
+        document.getElementById("working").value = newNumber
+    }
+}
+
+function operate(op) {
+
+    let currentWorking = document.getElementById("working").value
+
+    if (currentWorking && operator && working) {
+        const answer = calculate(operator, working, currentWorking)
+        document.getElementById("working").value = answer;
+        working = answer;
+    } else if (currentWorking) {
+        document.getElementById("working").value = currentWorking;
+        working = currentWorking;
     }
 
-    document.getElementById("display").value = ""
+    stacking = false
+    operator = op
+    if (op === '=') {
+        operator = ''
+    }
+
 }
