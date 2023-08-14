@@ -38,7 +38,7 @@ function calculate(operator, a, b) {
         case "=":
             document.getElementById("working").value = working;
         default:
-            return NaN; // Handle invalid operator
+            return NaN;
     }
 }
 
@@ -62,6 +62,12 @@ function cancel() {
 function invertSign() {
     let current = parseFloat(document.getElementById("working").value)
     let newNumber = current * -1
+    document.getElementById("working").value = newNumber
+}
+
+function backSpace() {
+    let current = parseFloat(document.getElementById("working").value)
+    let newNumber = current.toString().slice(0, -1);
     document.getElementById("working").value = newNumber
 }
 
