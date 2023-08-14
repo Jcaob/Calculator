@@ -15,7 +15,7 @@ function divide(x, y) {
         stacking = false
         working = ''
         operator = ''
-        return ("You are trying to divide by zero! Are you trying to create a black hole?")
+        return ("You just created a black hole and destroyed the earth!")
     } else {
         return parseFloat(x) / parseFloat(y);
     }
@@ -37,7 +37,6 @@ function calculate(operator, a, b) {
             return divide(a, b);
         case "=":
             document.getElementById("working").value = working;
-        // return divide(a, b);
         default:
             return NaN; // Handle invalid operator
     }
@@ -61,9 +60,9 @@ function cancel() {
 }
 
 function invertSign() {
-    let current = parseFloat(document.getElementById("display").value)
+    let current = parseFloat(document.getElementById("working").value)
     let newNumber = current * -1
-    document.getElementById("display").value = newNumber
+    document.getElementById("working").value = newNumber
 }
 
 function addDecimalPoint() {
@@ -80,7 +79,11 @@ function addDecimalPoint() {
 
 function operate(op) {
 
+
     let currentWorking = document.getElementById("working").value
+    if (currentWorking === "You just created a black hole and destroyed the earth!") {
+        currentWorking = '0'
+    }
 
     if (currentWorking && operator && working) {
         const answer = calculate(operator, working, currentWorking)
@@ -98,3 +101,27 @@ function operate(op) {
     }
 
 }
+
+function handleKeyPress(event) {
+    const key = event.key;
+
+    if (key.match(/[0-9]/)) {
+        enterNumber(key)
+    } else if (key === '=') {
+        operate('=')
+    } else if (key === 'Enter') {
+        operate('=')
+    } else if (key === 'Escape') {
+        cancel();
+    } else if (key === '+') {
+        operate('+');
+    } else if (key === '-') {
+        operate('-');
+    } else if (key === '/') {
+        operate('/');
+    } else if (key === '*') {
+        operate('*');
+    }
+}
+
+document.addEventListener('keydown', handleKeyPress);
